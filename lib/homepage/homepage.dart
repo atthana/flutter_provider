@@ -9,7 +9,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = Provider.of<Counter>(context);
+    final counter = Provider.of<Counter>(context,
+        listen:
+            false); // ถ้า listen = false มันจะไม่ listener แล้ว ฉะนั้นก้อจะไม่โชว์ value ล่ะนะ จึงต้องมี Consumer มาทำงานร่วมด้วย
     print('==== build ====> $counter');
     return Scaffold(
       appBar: AppBar(
@@ -22,9 +24,11 @@ class MyHomePage extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '${counter.value}',
-              style: Theme.of(context).textTheme.headline4,
+            Consumer<Counter>(
+              builder: (context, value, child) => Text(
+                '${counter.value}',
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
           ],
         ),
