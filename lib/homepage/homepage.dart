@@ -9,7 +9,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counter = Provider.of<Counter>(context,
+    final counter = Provider.of<ValueNotifier<int>>(context,
         listen:
             false); // ถ้า listen = false มันจะไม่ listener แล้ว ฉะนั้นก้อจะไม่โชว์ value ล่ะนะ จึงต้องมี Consumer มาทำงานร่วมด้วย
     print('==== build ====> $counter');
@@ -24,7 +24,7 @@ class MyHomePage extends StatelessWidget {
             Text(
               'You have pushed the button this many times:',
             ),
-            Consumer<Counter>(
+            Consumer<ValueNotifier<int>>(
               builder: (_, value, __) => Text(
                 '${counter.value}',
                 style: Theme.of(context).textTheme.headline4,
@@ -34,7 +34,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: counter.increment,
+        onPressed: () => counter.value++,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
