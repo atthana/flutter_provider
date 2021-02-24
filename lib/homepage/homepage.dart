@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
               'You have pushed the button this many times:',
             ),
             Consumer<Counter>(
-              builder: (context, value, child) => Text(
+              builder: (_, value, __) => Text(
                 '${counter.value}',
                 style: Theme.of(context).textTheme.headline4,
               ),
