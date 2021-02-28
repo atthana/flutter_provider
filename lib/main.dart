@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       home: ChangeNotifierProvider<ValueNotifier<int>>(
         create: (context) => ValueNotifier<int>(0),
-        // child: MyHomePage(title: 'Flutter Demo Home Page'),
-        child: TestExpanded(),
+        child: MyHomePage(title: 'Flutter Demo Home Page'),
+        // child: TestExpanded(),
       ),
     );
   }
