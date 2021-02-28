@@ -5,6 +5,6 @@ class Counter with ChangeNotifier {
 
   void increment() {
     value++;
-    notifyListeners();
+    notifyListeners();  // หลังจากที่เพิ่มจำนวนแล้ว ก้อให้แจ้งกลับมาบอก
   }
 }
